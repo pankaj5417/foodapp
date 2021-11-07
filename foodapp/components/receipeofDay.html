@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  
+  <link rel="stylesheet" href="../styles/style.css">
+  <body>
+    <div id="navbar"></div>
+    <div id="container"></div>
+
+  </body>
+</html>
+<script type="module">
+      let navbar_div=document.getElementById("navbar")
+      import navbar from "../components/navbar.js";
+
+    import {getData,append,debounce} from "../scripts/showData.js";
+   navbar_div.innerHTML=navbar();
+
+  let query=document.getElementById("search-box")
+  query.oninput=function(){
+   debounce(getData,2000)
+   
+    console.log(query.value)
+  }
+
+    let searchDiv=document.getElementById("search-div1")
+       searchDiv.innerText="wonderful"
+
+    console.log(navbar)
+    var response=getData(`https://www.themealdb.com/api/json/v1/1/random.php`)
+
+console.log(response)
+    response.then((res)=>{
+        let container2=document.getElementById("container")
+        append(res,container,container2)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+</script>
