@@ -12,7 +12,7 @@ function navbar(){
 
       <div id="options">
         <h3><a href="receipeofDay.html">receipe of the Day</a></h3>
-        <h3><a href="latestReceipe.html">Latest Receipe</a></h3>
+        <h3><a href="latest.html">Latest Receipe</a></h3>
         <h3><a href="#">Sign In</a></h3>
         <h3><a href="#">Sign Up</a></h3>
       

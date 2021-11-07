@@ -19,7 +19,7 @@
       let navbar_div=document.getElementById("navbar")
       import navbar from "../components/navbar.js";
 
-    import {getData,append,debounce} from "../scripts/showData.js";
+    import {getData,append2,debounce} from "../scripts/showData.js";
    navbar_div.innerHTML=navbar();
 
   let query=document.getElementById("search-box")
@@ -30,15 +30,14 @@
   }
 
     let searchDiv=document.getElementById("search-div1")
-       searchDiv.innerText="wonderful"
-
+      
     console.log(navbar)
     var response=getData(`https://www.themealdb.com/api/json/v1/1/random.php`)
 
 console.log(response)
     response.then((res)=>{
         let container2=document.getElementById("container")
-        append(res,container,container2)
+        append2(res,container2)
     })
     .catch((err)=>{
         console.log(err)

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  
+  <link rel="stylesheet" href="../styles/style.css">
+  <body>
+    <div id="navbar"></div>
+    <div id="container"></div>
+
+  </body>
+</html>
+<script type="module">
+     let navbar_div=document.getElementById("navbar")
+      import navbar from "../components/navbar.js";
+
+    import {getData,append,debounce} from "../scripts/showData.js";
+   navbar_div.innerHTML=navbar();
+
+  let query=document.getElementById("search-box")
+  let query1=document.querySelector("input")
+/*
+  query.oninput=function(){
+   debounce(function(){
+      var rest=getData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query.value}`)
+      rest.then((res)=>{
+  let search_div1=document.getElementById("search-div1")
+
+        let container=document.getElementById("container")
+        container.innerHTML=null
+        append(res,container,search_div1)
+    })
+  },2000)
+   
+    //console.log(resp)
+ }
+  var searchBtn=document.getElementById("search-logo")
+  searchBtn.onclick=function(){
+  var resp= getData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query.value}`)
+
+alert("clicked right")
+resp.then((res)=>{
+  let navbar_div=document.getElementById("navbar")
+
+        let container=document.getElementById("container")
+        container.innerHTML=null
+        append(res,container)
+    })
+
+  }
+*/
+  query.oninput=function(){
+    debounce(main,1000)
+  }
+
+ function main(){
+    let searchDiv=document.getElementById("search-div1")
+    //searchDiv.innerHTML=null
+
+       var response=getData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query.value}`)
+
+    //console.log(navbar)
+//console.log(response)
+    response.then((res)=>{
+        let container=document.getElementById("container")
+        append(res,searchDiv)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+  }
+
+  
+  
+</script>
